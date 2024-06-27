@@ -20,19 +20,23 @@ internal class CustomerCreatedNotificationHandler : INotificationHandler<Custome
         //await Task.Delay(TimeSpan.FromSeconds(20));
         //Console.WriteLine("CUSTOMER EMAIL NOTIFICATION");
 
-        ///////Audit Log
-        var customer = _context.Customers.Where( customer => customer.SystemId == notification.CustomerSystemId ).FirstOrDefault();
 
-        var auditLogRequest = new AuditEntryCreatedRequest(customer.Key, customer.DataSource, "Customer Created", createdBy, createdDateTime);
-        var status = await _sender.Send(auditLogRequest);
+
+
+        /////////////Example of stuff we need to do
+        /////////Audit Log
+        //var customer = _context.Customers.Where( customer => customer.SystemId == notification.CustomerSystemId ).FirstOrDefault();
+
+        //var auditLogRequest = new AuditEntryCreatedRequest(customer.Key, customer.DataSource, "Customer Created", createdBy, createdDateTime);
+        //var status = await _sender.Send(auditLogRequest);
  
-        //////Send Email
-        string sender = "";
-        string reciepenants = customer.CreatedBy
-        string bodyMessage = "TEMPLATE OBJECT";
+        ////////Send Email
+        //string sender = "";
+        //string reciepenants = customer.CreatedBy
+        //string bodyMessage = "TEMPLATE OBJECT";
 
-        var emailRequest = SendEmailRequest(sender, reciepenants, bodyMessage);
+        //var emailRequest = SendEmailRequest(sender, reciepenants, bodyMessage);
 
-        _sender.Send(SendEmailRequest);
+        //_sender.Send(SendEmailRequest);
     }
 }
